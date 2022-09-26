@@ -1,0 +1,195 @@
+<doctype html>
+<head>
+<title>html file</title>
+<style>
+.leftDiv
+{
+background-color:#efefef;
+//color:#000;
+height:150px;
+width:48%;
+float:left;
+padding:5px;
+}
+</style>
+<script src='jquery.js'></script>
+<script>
+$(()=>{
+$("#form1").addClass("leftDiv");
+$("#form2").addClass("leftDiv");
+$("#form3").addClass("leftDiv");
+$("#form4").addClass("leftDiv");
+$("#form5").addClass("leftDiv");
+
+$("#button1").click(function(ev){
+if($("#nm").val()==0)
+{
+alert("Name Section is empty");
+ev.preventDefault();
+}
+if($("#rn").val()==0)
+{
+alert("RollNumber section is empty");
+ev.preventDefault();
+}
+if($("#gn").val()==0)
+{
+alert("Gender section is empty");
+ev.preventDefault();
+}
+
+
+var nm=$("#nm").val();
+var rn=$("#rn").val();
+var gn=$("#gn").val();
+var studentService=new StudentService();
+var student=new Student();
+student.setName(nm);
+student.setGender(rn);
+student.setRollNumber(gn);
+studentService.AddDepartment(student).then(function(result){
+alert(result);
+},function(reject){
+alert(reject);
+});
+
+});
+
+
+
+
+
+
+
+$("#button2").click(function(ev){
+if($("#nm").val()==0)
+{
+alert("Name Section is empty");
+ev.preventDefault();
+}
+if($("#rn").val()==0)
+{
+alert("RollNumber section is empty");
+ev.preventDefault();
+}
+if($("#gn").val()==0)
+{
+alert("Gender section is empty");
+ev.preventDefault();
+}
+
+
+var nm=$("#nm").val();
+var rn=$("#rn").val();
+var gn=$("#gn").val();
+var studentService=new StudentService();
+var student=new Student();
+student.setName(nm);
+student.setGender(rn);
+student.setRollNumber(gn);
+studentService.UpdateDepartment(student).then(function(result){
+alert(result);
+},function(reject){
+alert(reject);
+});
+
+});
+
+
+
+$("#button3").click(function(ev){
+if($("#rn").val()==0)
+{
+alert("RollNumber section is empty");
+ev.preventDefault();
+}
+var rn=$("#rn").val();
+var studentService=new StudentService();
+studentService.deleteDepartment(rn).then(function(result){
+alert(result);
+},function(reject){
+alert(reject);
+});
+
+});
+
+
+
+$("#button4").click(function(ev){
+if($("#rn").val()==0)
+{
+alert("RollNumber section is empty");
+ev.preventDefault();
+}
+var rn=$("#rn").val();
+var studentService=new StudentService();
+studentService.getBy(rn).then(function(result){
+alert(result);
+},function(reject){
+alert(reject);
+});
+
+});
+
+
+
+$("#button5").click(function(ev){
+var studentService=new StudentService();
+studentService.getAll().then(function(result){
+alert(result);
+},function(reject){
+alert(reject);
+});
+
+});
+
+});
+</script>
+</head>
+<body>
+<div id='form1'>
+<form>
+Name<input type='text' id='nm'>
+RollNumber<input type='text' id='rn'>
+<button type='submit' id='button1'>Add<submit>
+</form>
+<span id='sp1'></span>
+</div>
+
+<div id='form2'>
+<form>
+Name<input type='text' id='nm'>
+RollNumber<input type='text' id='rn'>
+<button type='submit' id='button2'>Update<submit>
+</form>
+<span id='sp2'></span>
+</div>
+
+
+<div id='form3'>
+<form>
+Name<input type='text' id='nm'>
+RollNumber<input type='text' id='rn'>
+<button type='submit' id='button3'>Delete<submit>
+</form>
+<span id='sp3'></span>
+</div>
+
+
+<div id='form4'>
+<form>
+RollNumber<input type='text' id='rn'>
+<button type='submit' id='button4'>Get<submit>
+</form>
+<span id='sp4'></span>
+</div>
+
+<div id='form5'>
+<form>
+<button type='submit' id='button5'>Get All<submit>
+</form>
+<span id='sp5'></span>
+</div>
+
+</body>
+</html>

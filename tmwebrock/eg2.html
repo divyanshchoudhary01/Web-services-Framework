@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>tmwebrock</title>
+<script src='jquery.js'></script>
+<script>
+$(()=>{
+$("#button1").click(function(ev){
+var xyz=$("#xyz").val();
+var pqr=$("#pqr").val();
+var dataJSON=JSON.stringify({ name: xyz, email: pqr });
+$.ajax({
+type:"post",
+url:"stud/jsonCall",
+data: dataJSON,
+dataType:"json",
+async:false,
+success:function(result) 
+{
+alert(result);
+},
+error:function(result)
+{
+alert(result);
+},
+});
+});
+});
+</script>
+</head>
+<body>
+<h1>Student data</h1>
+<form>
+Enter Name <input type='text' id='xyz'>
+Enter email of the Student <input type='text' id='pqr'>
+<button id='button1' type='submit'>Add</button>
+</form>
+</body>
+</html>

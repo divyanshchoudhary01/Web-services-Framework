@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>tmwebrock</title>
+<script src='jquery.js'></script>
+<script>
+$(()=>{
+$("#button1").click(function(ev){
+var xyz=$("#xyz").val();
+var pqr=$("#pqr").val();
+$.ajax({
+url:"stud/jsonError",
+type:"get",
+async:false,
+dataType:"json",
+contentType:"application/json; charset=utf-8",
+data:JSON.stringify({x:xyz,p:pqr}),
+success: function(res)
+{
+//data - response from server
+alert(res);
+},
+error: function (res)
+{
+alert("Some problem");
+}
+});  
+});
+});
+</script>
+</head>
+<body>
+<h1>Add Department</h1>
+<form>
+Enter RollNumber <input type='text' id='xyz'>
+Enter Name<input type='text' id='pqr'>
+<button id='button1' type='submit'>Add</button>
+</form>
+</body>
+</html>
